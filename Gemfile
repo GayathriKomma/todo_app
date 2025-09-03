@@ -21,9 +21,6 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework
 gem "stimulus-rails"
 
-# Use Active Model has_secure_password
-# gem "bcrypt", "~> 3.1.7"
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[windows jruby]
 
@@ -40,9 +37,6 @@ gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma
 gem "thruster", require: false
-
-# Use Active Storage variants
-# gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # Debugging on Windows/MRI
@@ -67,3 +61,9 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+# ✅ Production-only gems
+group :production do
+  gem "uglifier" # for JavaScript compression (optional but useful)
+  gem "rack-cors", require: "rack/cors" # if you plan to allow external API requests
+end
